@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var MOVE_SPEED = 6000
+@export var move_speed = 6000
 
 @onready var sprite := $AnimatedSprite2D
 @onready var dash := $Dash as Dash
@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		dash.start_dash()
 
-	var speed = dash.SPEED if dash.is_dashing() else MOVE_SPEED
+	var speed = dash.speed if dash.is_dashing() else move_speed
 	velocity = Vector2(x_input, y_input) * speed * delta
 
 	move_and_slide()

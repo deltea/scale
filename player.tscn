@@ -1,17 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://du2gf3rn2jog5"]
+[gd_scene load_steps=8 format=3 uid="uid://du2gf3rn2jog5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_34s7f"]
+[ext_resource type="PackedScene" uid="uid://c2lgcam4hxyy3" path="res://camera.tscn" id="2_eyees"]
 [ext_resource type="PackedScene" uid="uid://c5c3qx8jobl8w" path="res://assets/player.ase" id="2_rvjm2"]
 [ext_resource type="PackedScene" uid="uid://51cqa40mvjre" path="res://dash.tscn" id="3_p2gdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e102a"]
 size = Vector2(8, 15)
 
+[sub_resource type="Gradient" id="Gradient_gk5vd"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.717391)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0p8ji"]
+gradient = SubResource("Gradient_gk5vd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_34s7f")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" parent="." instance=ExtResource("2_eyees")]
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_rvjm2")]
 autoplay = "Idle"
@@ -21,5 +32,12 @@ frame_progress = 0.066804
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_e102a")
 
-[node name="Dash" parent="." node_paths=PackedStringArray("SPRITE") instance=ExtResource("3_p2gdv")]
-SPRITE = NodePath("../AnimatedSprite2D")
+[node name="Dash" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_p2gdv")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 1)
+blend_mode = 2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_0p8ji")
+texture_scale = 10.0
