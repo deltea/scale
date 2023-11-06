@@ -6,6 +6,9 @@ class_name Player
 @onready var sprite := $AnimatedSprite2D
 @onready var dash := $Dash as Dash
 
+func _ready():
+	Globals.player = self
+
 func _physics_process(delta: float) -> void:
 	var x_input = Input.get_axis("left", "right")
 	var y_input = Input.get_axis("up", "down")

@@ -17,7 +17,6 @@ var ghost_timer: float = 0
 func _process(delta: float) -> void:
 	ghost_timer += delta
 	if ghost_timer >= ghost_delay and is_dashing():
-		print("ghost")
 		ghost_timer = 0
 		instance_ghost()
 

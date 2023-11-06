@@ -20,23 +20,27 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_34s7f")
 
 [node name="Camera" parent="." instance=ExtResource("2_eyees")]
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_rvjm2")]
+position = Vector2(-1, -5)
 autoplay = "Idle"
 frame_progress = 0.066804
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7.5)
+position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_e102a")
 
 [node name="Dash" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_p2gdv")]
 sprite = NodePath("../AnimatedSprite2D")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-1, -4)
 blend_mode = 2
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_0p8ji")
