@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq48vrbi8rvb2"]
+
+[ext_resource type="Texture2D" uid="uid://etqmht1jjfp3" path="res://assets/cursor.png" id="1_2ukms"]
+[ext_resource type="Script" path="res://mouse.gd" id="2_aqyal"]
+
+[node name="Mouse" type="TextureRect"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_2ukms")
+script = ExtResource("2_aqyal")
