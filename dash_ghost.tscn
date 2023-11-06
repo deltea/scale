@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2dx3enhewy7u"]
+
+[ext_resource type="Script" path="res://dash_ghost.gd" id="1_8x7uv"]
+
+[node name="DashGhost" type="Sprite2D"]
+region_rect = Rect2(24, 22, 13, 22)
+script = ExtResource("1_8x7uv")
