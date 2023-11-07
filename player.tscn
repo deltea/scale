@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://51cqa40mvjre" path="res://dash.tscn" id="3_p2gdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e102a"]
-size = Vector2(8, 15)
+size = Vector2(8, 14)
 
 [sub_resource type="Gradient" id="Gradient_gk5vd"]
 interpolation_mode = 1
@@ -32,13 +32,14 @@ autoplay = "Idle"
 frame_progress = 0.066804
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_e102a")
 
 [node name="Dash" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_p2gdv")]
 sprite = NodePath("../AnimatedSprite2D")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-1, -4)
+position = Vector2(0, 1)
 blend_mode = 2
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_0p8ji")
