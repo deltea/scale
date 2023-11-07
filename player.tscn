@@ -28,12 +28,10 @@ script = ExtResource("1_34s7f")
 [node name="Camera" parent="." instance=ExtResource("2_eyees")]
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_rvjm2")]
-position = Vector2(-1, -5)
 autoplay = "Idle"
 frame_progress = 0.066804
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_e102a")
 
 [node name="Dash" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_p2gdv")]

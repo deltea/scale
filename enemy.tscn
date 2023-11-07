@@ -1,34 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6fxk82463p0m"]
+[gd_scene load_steps=3 format=3 uid="uid://b6fxk82463p0m"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_8xudt"]
 [ext_resource type="PackedScene" uid="uid://cqtv3ofgqk6id" path="res://assets/enemy.ase" id="1_xx2nv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3e8t"]
-size = Vector2(8, 20)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_8xudt")
+chase_speed = 70
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("1_xx2nv")]
 position = Vector2(-1, -6)
 animation = &"Run"
 autoplay = "Run"
-frame_progress = 0.919142
+frame_progress = 0.163175
 
 [node name="PlayerRaycast" type="RayCast2D" parent="."]
-target_position = Vector2(150, 0)
+target_position = Vector2(200, 0)
 collision_mask = 3
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 283.26
 
 [node name="NavigationTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_a3e8t")
-disabled = true
+[node name="ForgetTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]
+[connection signal="timeout" from="ForgetTimer" to="." method="_on_forget_timer_timeout"]
