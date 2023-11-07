@@ -10,7 +10,6 @@ enum STATE { PATROL, CHASE }
 @onready var sprite := $AnimatedSprite2D
 @onready var raycast := $PlayerRaycast
 @onready var nav_agent := $NavigationAgent2D
-@onready var forget_timer = $ForgetTimer
 
 var state = STATE.PATROL
 
@@ -30,14 +29,9 @@ func chase_state():
 	velocity = direction * chase_speed
 	sprite.flip_h = direction.x < 0
 
-	if not raycast.get_collider() is Player and forget_timer.is_stopped():
-		forget_timer.start()
+	if not raycast.get_collider() is Player: state = STATE.PATROL
 
 	move_and_slide()
 
 func _on_navigation_timer_timeout() -> void:
 	nav_agent.target_position = Globals.player.global_position
-
-func _on_forget_timer_timeout() -> void:
-	if not raycast.get_collider() is Player:
-		state = STATE.PATROL

@@ -26,4 +26,6 @@ func _physics_process(delta: float) -> void:
 	var speed = dash.speed if dash.is_dashing() else move_speed
 	velocity = Vector2(x_input, y_input) * speed * delta
 
+	if dash.is_dashing(): sprite.animation = "Dash"
+
 	move_and_slide()
