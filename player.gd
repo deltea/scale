@@ -15,6 +15,12 @@ func _physics_process(delta: float) -> void:
 
 	sprite.flip_h = get_global_mouse_position().x < position.x
 
+	if x_input != 0:
+		if sprite.flip_h:
+			sprite.speed_scale = -x_input
+		else:
+			sprite.speed_scale = x_input
+
 	if x_input or y_input:
 		sprite.animation = "Run"
 	else:

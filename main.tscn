@@ -67,5 +67,4 @@ blend_mode = 1
 
 [node name="Enemy" parent="World" instance=ExtResource("6_o1kr8")]
 position = Vector2(252, 425)
-chase_speed = 150
 patrol_path = SubResource("Curve2D_om778")
