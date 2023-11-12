@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cl7ia3ay287mf"]
+[gd_scene load_steps=13 format=3 uid="uid://cl7ia3ay287mf"]
 
 [ext_resource type="PackedScene" uid="uid://dq48vrbi8rvb2" path="res://mouse.tscn" id="1_l2y1f"]
 [ext_resource type="Script" path="res://world.gd" id="1_n8xgi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dblekt6kubfql" path="res://assets/tileset.png" id="3_voomd"]
 [ext_resource type="PackedScene" uid="uid://hipogrh7cmda" path="res://furniture.tscn" id="6_5wnvx"]
 [ext_resource type="PackedScene" uid="uid://b6fxk82463p0m" path="res://enemy.tscn" id="6_o1kr8"]
+[ext_resource type="PackedScene" uid="uid://ko7eyfho8b28" path="res://gun.tscn" id="7_icinr"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xxfsh"]
 polygon = PackedVector2Array(-7, -23, -6, -23, -6, -24, 6, -24, 6, -23, 7, -23, 7, -22, 8, -22, 8, 8, -8, 8, -8, -22, -7, -22)
@@ -72,3 +73,6 @@ patrol_path = SubResource("Curve2D_om778")
 
 [node name="Furniture" parent="World" instance=ExtResource("6_5wnvx")]
 position = Vector2(236, 359)
+
+[node name="Gun" parent="World" instance=ExtResource("7_icinr")]
+position = Vector2(409, 199)

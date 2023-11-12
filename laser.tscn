@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://pkclgk7rq8yn"]
+
+[ext_resource type="Script" path="res://laser.gd" id="1_rpu8s"]
+
+[node name="Laser" type="Line2D"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 8.0
+default_color = Color(1, 0.835294, 0, 1)
+script = ExtResource("1_rpu8s")

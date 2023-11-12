@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ko7eyfho8b28"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://c0p4l1b2om5c6" path="res://physics_materials/bouncy.tres" id="1_264p8"]
+[ext_resource type="Texture2D" uid="uid://dnnayv5mgdw74" path="res://assets/items/gun.png" id="1_aaqe6"]
+[ext_resource type="Script" path="res://gun.gd" id="1_y67qo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0bq8"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmaak"]
+size = Vector2(12, 6)
+
+[node name="Gun" type="RigidBody2D"]
+collision_layer = 4
+inertia = 3.0
+physics_material_override = ExtResource("1_264p8")
+linear_damp = 4.0
+angular_damp = 8.0
+script = ExtResource("1_y67qo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aaqe6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_y0bq8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(500, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_gmaak")
