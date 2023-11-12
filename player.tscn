@@ -127,6 +127,7 @@ shape = SubResource("RectangleShape2D_e102a")
 
 [node name="Dash" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_p2gdv")]
 sprite = NodePath("../AnimatedSprite2D")
+speed = 20000
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 1)
