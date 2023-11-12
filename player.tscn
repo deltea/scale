@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://du2gf3rn2jog5"]
+[gd_scene load_steps=22 format=3 uid="uid://du2gf3rn2jog5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_34s7f"]
 [ext_resource type="PackedScene" uid="uid://c2lgcam4hxyy3" path="res://camera.tscn" id="2_eyees"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0s4vps5r15yq" path="res://assets/player.png" id="3_8y4wa"]
 [ext_resource type="PackedScene" uid="uid://51cqa40mvjre" path="res://dash.tscn" id="3_p2gdv"]
 [ext_resource type="Texture2D" uid="uid://ghvw0xb8s5c" path="res://assets/idle.png" id="4_pkr18"]
+[ext_resource type="Script" path="res://item_control.gd" id="7_xy78r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpkut"]
 atlas = ExtResource("4_pkr18")
@@ -104,8 +105,8 @@ gradient = SubResource("Gradient_gk5vd")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6ipo"]
-size = Vector2(36, 36)
+[sub_resource type="CircleShape2D" id="CircleShape2D_mechc"]
+radius = 28.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -136,15 +137,18 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_0p8ji")
 texture_scale = 10.0
 
-[node name="ItemArea" type="Area2D" parent="."]
+[node name="ItemControl" type="Node2D" parent="."]
+script = ExtResource("7_xy78r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea"]
-position = Vector2(4, 1)
-shape = SubResource("RectangleShape2D_g6ipo")
-
-[node name="ItemTransform" type="RemoteTransform2D" parent="."]
+[node name="ItemTransform" type="RemoteTransform2D" parent="ItemControl"]
 update_rotation = false
 update_scale = false
 
-[connection signal="area_entered" from="ItemArea" to="." method="_on_item_area_area_entered"]
-[connection signal="area_exited" from="ItemArea" to="." method="_on_item_area_area_exited"]
+[node name="ItemArea" type="Area2D" parent="ItemControl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemControl/ItemArea"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_mechc")
+
+[connection signal="area_entered" from="ItemControl/ItemArea" to="ItemControl" method="_on_item_area_area_entered"]
+[connection signal="area_exited" from="ItemControl/ItemArea" to="ItemControl" method="_on_item_area_area_exited"]
